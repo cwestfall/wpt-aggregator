@@ -2,21 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "web_tests/new", :type => :view do
   before(:each) do
-    assign(:web_test, WebTest.new(
-      :url => "MyText",
-      :label => "MyString",
-      :requested_runs => 1,
-      :location => "MyString",
-      :additional_parameters => "MyText",
-      :wpt_id => "MyString"
-    ))
+    web_test = create(:web_test)
+    @web_test = assign(:web_test, web_test)
+    @test_suite = assign(:test_suite, web_test.test_suite)
   end
 
   it "renders new web_test form" do
-    skip()
     render
 
-    assert_select "form[action=?][method=?]", web_tests_path, "post" do
+    assert_select "form[action=?][method=?]", test_suite_web_test_path(@test_suite, @web_test), "post" do
 
       assert_select "textarea#web_test_url[name=?]", "web_test[url]"
 
@@ -28,9 +22,6 @@ RSpec.describe "web_tests/new", :type => :view do
 
       assert_select "textarea#web_test_additional_parameters[name=?]", "web_test[additional_parameters]"
 
-      assert_select "input#web_test_status[name=?]", "web_test[status]"
-
-      assert_select "input#web_test_wpt_id[name=?]", "web_test[wpt_id]"
     end
   end
 end

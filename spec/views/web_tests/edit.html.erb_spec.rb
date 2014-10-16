@@ -2,14 +2,16 @@ require 'rails_helper'
 
 RSpec.describe "web_tests/edit", :type => :view do
   before(:each) do
-    @web_test = assign(:web_test, create(:web_test))
+    web_test = create(:web_test)
+    @web_test = assign(:web_test, web_test)
+    @test_suite = assign(:test_suite, web_test.test_suite)
+
   end
 
   it "renders the edit web_test form" do
-    skip()
     render
 
-    assert_select "form[action=?][method=?]", web_test_path(@web_test), "post" do
+    assert_select "form[action=?][method=?]", test_suite_web_test_path(@test_suite, @web_test), "post" do
 
       assert_select "textarea#web_test_url[name=?]", "web_test[url]"
 
@@ -21,9 +23,6 @@ RSpec.describe "web_tests/edit", :type => :view do
 
       assert_select "textarea#web_test_additional_parameters[name=?]", "web_test[additional_parameters]"
 
-      assert_select "input#web_test_status[name=?]", "web_test[status]"
-
-      assert_select "input#web_test_wpt_id[name=?]", "web_test[wpt_id]"
     end
   end
 end

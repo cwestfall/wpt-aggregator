@@ -19,6 +19,7 @@ require 'webpagetest'
 require 'webmock/rspec'
 require 'stub_requests' # Stubs for the library in lib
 require 'webpagetest_stubs' # Stubs for wpt-aggregator
+#require 'capybara/rspec'
 
 RSpec.configure do |config|
   config.include StubRequests # Stubs for the library in lib

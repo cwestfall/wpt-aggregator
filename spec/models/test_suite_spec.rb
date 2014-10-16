@@ -14,8 +14,8 @@ RSpec.describe TestSuite, :type => :model do
   end
 
   describe 'execution of WebTests' do
-    it 'should start all tests in the \'pending\' status' do
-      skip('finish writing test for WebTest, then do this')
+    it 'should call execute on all child WebTests' do
+      skip('Implement test that will validate execute has been called on each child')
     end
   end
 end

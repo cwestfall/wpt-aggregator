@@ -1,10 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "TestSuites", :type => :request do
-  describe "GET /test_suites" do
-    it "works! (now write some real specs)" do
-      get test_suites_path
-      expect(response).to have_http_status(200)
+describe 'TestSuites', :type => :feature do
+
+  describe 'CRUD operations' do
+    it 'displays the current Test Suites' do
+      create(:test_suite, label: 'Google Suite')
+
+      visit test_suites_path
+      expect(page).to have_content('Google Suite')
     end
   end
 end
