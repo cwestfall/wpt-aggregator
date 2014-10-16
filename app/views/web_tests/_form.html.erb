@@ -1,0 +1,37 @@
+<%= form_for([@test_suite, @web_test]) do |f| %>
+  <% if @web_test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@web_test.errors.count, "error") %> prohibited this web_test from being saved:</h2>
+
+      <ul>
+      <% @web_test.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_area :url %>
+  </div>
+  <div class="field">
+    <%= f.label :label %><br>
+    <%= f.text_field :label %>
+  </div>
+  <div class="field">
+    <%= f.label :requested_runs %><br>
+    <%= f.number_field :requested_runs %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :additional_parameters %><br>
+    <%= f.text_area :additional_parameters %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

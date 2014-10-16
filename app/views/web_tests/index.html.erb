@@ -1,0 +1,37 @@
+<h1>Listing Web Tests for <%= @test_suite.label %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Label</th>
+      <th>Requested runs</th>
+      <th>Location</th>
+      <th>Additional parameters</th>
+      <th>Status</th>
+      <th>Wpt</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @web_tests.each do |web_test| %>
+      <tr>
+        <td><%= web_test.url %></td>
+        <td><%= web_test.label %></td>
+        <td><%= web_test.requested_runs %></td>
+        <td><%= web_test.location %></td>
+        <td><%= web_test.additional_parameters %></td>
+        <td><%= web_test.status %></td>
+        <td><%= web_test.wpt_id %></td>
+        <td><%= link_to 'Show', [@test_suite, web_test] %></td>
+        <td><%= link_to 'Edit', edit_test_suite_web_test_path(@test_suite, web_test) %></td>
+        <td><%= link_to 'Destroy', [@test_suite, web_test], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Web test', new_test_suite_web_test_path %>

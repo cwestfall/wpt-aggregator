@@ -1,0 +1,32 @@
+<h1>Test Suites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Number of Test</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @test_suites.each do |test_suite| %>
+        <tr>
+          <td><%= test_suite.label %></td>
+          <td>
+            <%= test_suite.web_test.size %>
+            <%= link_to 'View', test_suite_web_tests_path(test_suite) %>
+            <%= link_to 'New', new_test_suite_web_test_path(test_suite) %>
+          </td>
+          <td>
+            <%= link_to 'Show', test_suite %>
+            <%= link_to 'Edit', edit_test_suite_path(test_suite) %>
+            <%= link_to 'Destroy', test_suite, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+    <%= link_to 'New Test Suite', new_test_suite_path %>
+</p>
