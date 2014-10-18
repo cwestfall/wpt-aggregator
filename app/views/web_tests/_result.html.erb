@@ -1,0 +1,53 @@
+<table id="tableResults" class="pretty" align="center" border="1" cellpadding="10" cellspacing="0">
+  <thead>
+  <tr>
+    <th style="border:1px white solid;"></th>
+    <th colspan="4"></th>
+    <th colspan="3">Document Complete</th>
+    <th colspan="3">Fully Loaded</th>
+  </tr>
+  <tr>
+    <th></th>
+    <th>Load Time</th>
+    <th>First Byte</th>
+    <th>Start Render</th>
+    <th>DOM Elements</th>
+
+    <th>Time</th>
+    <th>Requests</th>
+    <th>Bytes In</th>
+
+    <th>Time</th>
+    <th>Requests</th>
+    <th>Bytes In</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>First View</td>
+    <td><%= run.first_view.load_time %></td>
+    <td><%= run.first_view.ttfb %></td>
+    <td><%= run.first_view.render %></td>
+    <td><%= run.first_view.dom_elements %></td>
+    <td><%= run.first_view.doc_time %></td>
+    <td><%= run.first_view.requests_doc %></td>
+    <td><%= number_to_human_size(run.first_view.bytes_in_doc) %></td>
+    <td><%= run.first_view.fully_loaded %></td>
+    <td><%= run.first_view.requests %></td>
+    <td><%= number_to_human_size(run.first_view.bytes_in) %></td>
+  </tr>
+  <tr>
+    <td>Repeat View</td>
+    <td><%= run.repeat_view.load_time %></td>
+    <td><%= run.repeat_view.ttfb %></td>
+    <td><%= run.repeat_view.render %></td>
+    <td><%= run.repeat_view.dom_elements %></td>
+    <td><%= run.repeat_view.doc_time %></td>
+    <td><%= run.repeat_view.requests_doc %></td>
+    <td><%= number_to_human_size(run.repeat_view.bytes_in_doc) %></td>
+    <td><%= run.repeat_view.fully_loaded %></td>
+    <td><%= run.repeat_view.requests %></td>
+    <td><%= number_to_human_size(run.repeat_view.bytes_in) %></td>
+  </tr>
+  </tbody>
+</table>

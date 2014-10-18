@@ -27,6 +27,7 @@ FactoryGirl.define do
     score_combine 1
     score_compress 1
     score_etags 1
+    dom_elements 21
     run_date '2014-10-09 15:40:01'
   end
 end

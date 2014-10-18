@@ -7,6 +7,7 @@ class WebTest < ActiveRecord::Base
   enum status: [ :pending, :running, :complete ]
 
   belongs_to :test_suite
+  belongs_to :average, class_name: 'Run'
   has_many :run
 
   def execute
@@ -46,6 +47,9 @@ class WebTest < ActiveRecord::Base
         self.run << run
       end
 
+      self.raw_result = response.raw.to_json
+      self.average = create_run(response.result.average)
+
       self.complete!
       self.save
     end
@@ -74,6 +78,7 @@ class WebTest < ActiveRecord::Base
       r.bytes_in          = wpt_result.bytesIn
       r.bytes_in_doc      = wpt_result.bytesInDoc
       r.requests          = wpt_result.requests
+      r.requests_doc      = wpt_result.requestsDoc
       r.render            = wpt_result.render
       r.fully_loaded      = wpt_result.fullyLoaded
       r.cached            = wpt_result.cached
@@ -89,6 +94,7 @@ class WebTest < ActiveRecord::Base
       r.score_combine     = wpt_result.score_combine
       r.score_compress    = wpt_result.score_compress
       r.score_etags       = wpt_result.score_etags
+      r.dom_elements      = wpt_result.domElements
       r.run_date          = wpt_result.date
     end
   end

@@ -9,5 +9,6 @@ FactoryGirl.define do
     location 'Colorado:Chrome'
     additional_parameters 'comma=seperated,list=of,keys_and=values'
     wpt_id '141013_KT_1113'
+    raw_result 'Some JSON result'
   end
 end

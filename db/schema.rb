@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009194001) do
+ActiveRecord::Schema.define(version: 20141018121154) do
 
   create_table "results", force: true do |t|
     t.text     "url"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20141009194001) do
     t.datetime "run_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "dom_elements"
   end
 
   create_table "runs", force: true do |t|
@@ -72,8 +73,11 @@ ActiveRecord::Schema.define(version: 20141009194001) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "test_suite_id"
+    t.text     "raw_result"
+    t.integer  "average_id"
   end
 
+  add_index "web_tests", ["average_id"], name: "index_web_tests_on_average_id"
   add_index "web_tests", ["test_suite_id"], name: "index_web_tests_on_test_suite_id"
 
 end

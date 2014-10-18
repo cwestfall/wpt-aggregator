@@ -92,6 +92,22 @@ RSpec.describe WebTest, :type => :model do
           expect(run.repeat_view).to be_instance_of(Result)
         end
       end
+
+      it 'should create an average run object' do
+        test_result_stub
+        test_status_complete_stub
+        web_test.execute
+        expect(web_test.average).to be_instance_of(Run)
+      end
+
+      it 'should save the json result' do
+        test_result_stub
+        test_status_complete_stub
+        web_test.execute
+
+        expect(web_test.raw_result).to be_instance_of(String)
+      end
+
     end
   end
 
