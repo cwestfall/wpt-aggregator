@@ -143,6 +143,8 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.1)
+    rufus-scheduler (3.0.9)
+      tzinfo
     safe_yaml (1.0.4)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -202,6 +204,7 @@ DEPENDENCIES
   rails (= 4.1.6)
   rb-fsevent
   rspec-rails
+  rufus-scheduler
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   shoulda-matchers
